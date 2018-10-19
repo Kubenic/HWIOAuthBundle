@@ -145,9 +145,15 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
+        $builder = new TreeBuilder('hwi_oauth');
 
-        $rootNode = $builder->root('hwi_oauth');
+        if (\method_exists($builder, 'getRootNode')) {
+            $rootNode = $builder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $builder->root('hwi_oauth');
+        }
+
         $rootNode
             ->fixXmlConfig('firewall_name')
             ->children()
