@@ -41,6 +41,7 @@ class BattleNetUsResourceOwner extends GenericOAuth1ResourceOwner
             'authorization_url' => 'https://us.battle.net/oauth/authorize',
             'access_token_url' => 'https://us.battle.net/oauth/token',
             'infos_url' => 'https://us.battle.net/oauth/userinfo',
+            'scope' => 'wow.profile'
         ));
     }
 }
